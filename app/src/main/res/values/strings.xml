@@ -1,0 +1,94 @@
+<!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Lens Transposition</string>
+
+    <string name="transposition_minus_cylinder_title">(-) Cylinder</string>
+    <string name="transposition_plus_cylinder_title">(+) Cylinder</string>
+    <string name="transposition_cross_cylinder_title">Cross Cylinder</string>
+    <string name="transposition_label_sphere_power">Sphere power</string>
+    <string name="transposition_label_cylinder_power">Cylinder power</string>
+    <string name="transposition_label_axis">Axis</string>
+    <string name="transposition_unit_sphere_power">D Sph</string>
+    <string name="transposition_unit_cylinder_power">D Cyl</string>
+    <string name="transposition_unit_axis">&#215;</string>
+    <string name="transposition_submit_title">Transpose</string>
+
+    <string name="transposition_error_unchecked_title">No lens formula selected</string>
+    <string name="transposition_error_unchecked_message">Please select the type of lens formula before proceeding.</string>
+    <string name="transposition_error_incomplete_title">Incomplete data</string>
+    <string name="transposition_error_incomplete_message">Please fill in all the required fields to continue with the transposition.</string>
+    <string name="transposition_error_minus_cylinder_plus_power_title">(-) Cylinder lens formula cannot have (+) Cylinder power</string>
+    <string name="transposition_error_minus_cylinder_plus_power_message">You have entered a (+) Cylinder power in the (-) Cylinder lens formula. If you wish to proceed with these values, please enter them in the (+) Cylinder lens formula instead.</string>
+    <string name="transposition_error_plus_cylinder_minus_power_title">(+) Cylinder lens formula cannot have (-) Cylinder power</string>
+    <string name="transposition_error_plus_cylinder_minus_power_message">You have entered a (-) Cylinder power in the (+) Cylinder lens formula. If you wish to proceed with these values, please enter them in the (-) Cylinder lens formula instead.</string>
+    <string name="transposition_error_cross_cylinder_wrong_axis_title">Cross Cylinder axes do not match</string>
+    <string name="transposition_error_cross_cylinder_wrong_axis_message">The axes of a Cross Cylinder lens formula are perpendicular to each other. Please make sure that they are 90 degrees apart.</string>
+    <string name="transposition_error_axis_out_of_bounds_title">Axis beyond limits</string>
+    <string name="transposition_error_axis_out_of_bounds_message">Please make sure that the axes you entered are ranging from 0 to 180 degrees.</string>
+
+    <string name="about_title">About</string>
+    <string name="about_app_title">About app</string>
+    <string name="about_app_version_pattern" translatable="false">v%1$s</string>
+    <string name="about_app_birthday_pattern">Today marks this app&#8217;s %1$s birthday!</string>
+    <string name="about_app_changelog_title">Changelog</string>
+    <string name="about_app_twitter_title">Follow on Twitter</string>
+    <string name="about_app_github_title">Fork on Github</string>
+    <string name="about_app_licenses_title">Licenses</string>
+    <string name="about_app_updater_title">Check for updates</string>
+    <string name="about_app_contributors_title">Contributors</string>
+    <string name="about_dev_title">Developer</string>
+    <string name="about_dev_info_detail_name_title" translatable="false">KevinT.</string>
+    <string name="about_dev_info_detail_location_title">Cavite, Philippines</string>
+    <string name="about_dev_info_detail_birthday_pattern">Today is his %1$s birthday!</string>
+    <string name="about_dev_email_title">Write an email</string>
+    <string name="about_dev_facebook_title">Visit on Facebook</string>
+    <string name="about_dev_instagram_title">Visit on Instagram</string>
+    <string name="about_dev_twitter_title">Follow on Twitter</string>
+    <string name="about_dev_telegram_title">Message on Telegram</string>
+    <string name="about_dev_google_play_title">Check out on Google Play</string>
+    <string name="about_others_title">Others</string>
+    <string name="about_others_rate_title">Rate on Google Play</string>
+    <string name="about_others_translate_title">Translate the app</string>
+    <string name="about_others_donate_title">Support development</string>
+
+    <string name="utils_error_cant_open_url">There is no app installed on your device that can open this URL.</string>
+
+    <string name="rate_title">Love the app?</string>
+    <string name="rate_message">If you enjoy using %1$s, please take a moment and leave a review on Google Play.</string>
+    <string name="rate_action_neutral">Later</string>
+    <string name="rate_action_negative">Never</string>
+    <string name="rate_action_positive">Rate</string>
+    <string name="rate_error_cant_open_url">There is no app installed on your device that can open this URL.</string>
+
+    <string name="updater_flexible_complete_prompt_message">An update has just been downloaded.</string>
+    <string name="updater_flexible_complete_prompt_action_message">Restart</string>
+    <string name="updater_flexible_download_start_message">The update is now downloading.</string>
+    <string name="updater_feedback_up_to_date">You are running the latest version of the app.</string>
+    <string name="updater_feedback_in_progress">An update is already underway.</string>
+    <string name="updater_feedback_error">An error occurred while trying to update. Please try again.</string>
+
+    <string name="donate_title">Donate</string>
+    <string name="donate_error_service_unavailable_message">A connection to the billing server could not be made to process the donation. Please check your internet connection or try again in a few minutes.</string>
+    <string name="donate_error_unknown_message">An unknown error has occurred with the donation.</string>
+    <string name="donate_pending_message">A purchase on your account is still pending. Please coordinate with your payment method provider to complete your purchase.</string>
+    <string name="donate_received_message">Donation received! From the bottom of our hearts, we thank you for showing your support.</string>
+
+    <string name="contributors_title">Huge thanks to the contributors!</string>
+    <string name="contributors_description_translation">%1$s translations</string>
+    <string name="contributors_action" translatable="false">@android:string/ok</string>
+</resources>
