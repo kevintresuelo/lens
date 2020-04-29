@@ -134,7 +134,7 @@ class AboutFragment : Fragment() {
          * Opens the app's Github profile.
          */
         binding.faLlAppGithub.setOnClickListener {
-            openUrl(activity as Activity, "https://github.com/kevintresuelo/treble", false)
+            openUrl(activity as Activity, "https://github.com/kevintresuelo/lens", false)
         }
 
         /**
