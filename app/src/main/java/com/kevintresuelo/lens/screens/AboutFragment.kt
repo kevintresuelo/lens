@@ -216,10 +216,12 @@ class AboutFragment : Fragment() {
 
         /**
          * Opens the translation dashboard
-         */
+         *
         binding.faLlOthersTranslate.setOnClickListener {
             openUrl(activity as Activity, "https://poeditor.com/join/project/oVDSgMHUwC", false)
         }
+        */
+        binding.faLlOthersTranslate.visibility = View.GONE
 
         /**
          * Opens the donation dialog
