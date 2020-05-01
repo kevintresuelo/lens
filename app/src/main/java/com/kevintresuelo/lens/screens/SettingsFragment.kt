@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.ListPreference
@@ -29,7 +28,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         val billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
         billingViewModel.proVersionLiveData.observe(this, Observer {
-            it?.apply { hasProVersion = entitled }
+            it?.apply {
+                hasProVersion = entitled
+                enableProVersionPreference(!entitled)
+            }
         })
 
         val themePreference: ListPreference? = findPreference(getString(R.string.prefs_general_theme_key))
@@ -56,7 +58,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         proVersionPreference = findPreference(getString(R.string.prefs_general_pro_version_key))
         proVersionPreference?.setOnPreferenceClickListener {
-            ProVersionDialogFragment(billingViewModel).show(parentFragmentManager, ProVersionDialogFragment.TAG)
+            if (hasProVersion) {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.pro_version_entitled_title)
+                    .setMessage(R.string.pro_version_entitled_description)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
+            } else {
+                ProVersionDialogFragment(billingViewModel).show(parentFragmentManager, ProVersionDialogFragment.TAG)
+            }
             true
         }
 
@@ -65,17 +75,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         val sharedProVersionPreferences = context?.getSharedPreferences(prefsFileKey, Context.MODE_PRIVATE)
         val hasPurchased = sharedProVersionPreferences?.getBoolean(hasPurchasedKey, false) ?: false
-
-        Log.d("TAG","sdadasd ${!hasPurchased}")
-
-        proVersionPreference?.isVisible = !hasPurchased
-
-        billingViewModel.proVersionLiveData.observe(this, Observer {
-            it?.apply { showProVersionPreference(!entitled) }
-        })
     }
 
-    private fun showProVersionPreference(shouldBeShown: Boolean) {
-        proVersionPreference?.isVisible = shouldBeShown
+    private fun enableProVersionPreference(state: Boolean) {
+        if (!state) {
+            proVersionPreference?.summary = getString(R.string.prefs_general_pro_version_entitled_summary)
+        }
     }
 }

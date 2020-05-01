@@ -3,6 +3,7 @@ package com.kevintresuelo.lens.screens
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -52,6 +53,8 @@ class TranspositionFragment : Fragment() {
         billingViewModel.proVersionLiveData.observe(viewLifecycleOwner, Observer {
             if (it == null || !it.entitled) {
                 showAds()
+            } else {
+                (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name_pro)
             }
         })
 
@@ -79,6 +82,7 @@ class TranspositionFragment : Fragment() {
     }
 
     private fun showAds() {
+        Log.d("TAG","showAds")
         val adRequest = AdRequest.Builder().build()
         binding.ftAvBottomAds.visibility = View.VISIBLE
         binding.ftAvBottomAds.loadAd(adRequest)

@@ -16,6 +16,6 @@
         <Preference
             android:key="@string/prefs_general_pro_version_key"
             android:title="@string/prefs_general_pro_version_title"
-            android:summary="@string/prefs_general_pro_version_summary" />
+            android:summary="@string/prefs_general_pro_version_not_entitled_summary" />
     </PreferenceCategory>
 </PreferenceScreen>

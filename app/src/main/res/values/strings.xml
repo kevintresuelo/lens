@@ -16,6 +16,7 @@
 
 <resources>
     <string name="app_name">Lens Transposition</string>
+    <string name="app_name_pro">Lens Transposition Pro</string>
 
     <string name="transposition_minus_cylinder_title">(-) Cylinder</string>
     <string name="transposition_plus_cylinder_title">(+) Cylinder</string>
@@ -85,8 +86,8 @@
     <string name="donate_title">Donate</string>
     <string name="donate_received_message">Donation received! From the bottom of our hearts, we thank you for showing your support.</string>
 
-    <string name="pro_version_title">Get Pro version</string>
-    <string name="pro_version_description">Pro version removes ads and unlocks the theme selection.</string>
+    <string name="pro_version_entitled_title">Congratulations</string>
+    <string name="pro_version_entitled_description">Pro version removes ads and unlocks the theme selection.</string>
 
     <string name="billing_error_service_unavailable_message">A connection to the billing server could not be made to process the purchase. Please check your internet connection or try again in a few minutes.</string>
     <string name="billing_error_unknown_message">An unknown error has occurred with the purchase.</string>
@@ -109,7 +110,8 @@
     <string name="prefs_general_theme_option_dark_value" translatable="false">dark</string>
     <string name="prefs_general_theme_default_value" translatable="false">@string/prefs_general_theme_option_default_value</string>
     <string name="prefs_general_pro_version_title" translatable="false">Pro version</string>
-    <string name="prefs_general_pro_version_summary" translatable="false">Remove ads and unlock theme chooser</string>
+    <string name="prefs_general_pro_version_not_entitled_summary" translatable="false">Remove ads and unlock theme chooser</string>
+    <string name="prefs_general_pro_version_entitled_summary" translatable="false">Active</string>
     <string name="prefs_general_pro_version_key" translatable="false">pro_version</string>
 
     <string name="prefs_error_no_pro_version_title">Pro version exclusive</string>
