@@ -16,7 +16,7 @@ android {
         applicationId "com.kevintresuelo.lens"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 100000
+        versionCode 100001
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
