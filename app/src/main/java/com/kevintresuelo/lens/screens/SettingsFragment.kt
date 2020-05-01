@@ -61,7 +61,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             if (hasProVersion) {
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle(R.string.pro_version_entitled_title)
-                    .setMessage(R.string.pro_version_entitled_description)
+                    .setMessage(R.string.pro_version_description)
                     .setPositiveButton(android.R.string.ok, null)
                     .show()
             } else {

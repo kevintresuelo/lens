@@ -86,8 +86,9 @@
     <string name="donate_title">Donate</string>
     <string name="donate_received_message">Donation received! From the bottom of our hearts, we thank you for showing your support.</string>
 
+    <string name="pro_version_title">Pro version</string>
     <string name="pro_version_entitled_title">Congratulations</string>
-    <string name="pro_version_entitled_description">Pro version removes ads and unlocks the theme selection.</string>
+    <string name="pro_version_description">Pro version removes ads and unlocks the theme selection.</string>
 
     <string name="billing_error_service_unavailable_message">A connection to the billing server could not be made to process the purchase. Please check your internet connection or try again in a few minutes.</string>
     <string name="billing_error_unknown_message">An unknown error has occurred with the purchase.</string>

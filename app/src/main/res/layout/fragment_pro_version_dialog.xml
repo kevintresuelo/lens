@@ -27,11 +27,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/donate_title"
+        android:text="@string/pro_version_title"
         style="@style/TextAppearance.Lens.Subtitle1"
         android:layout_marginStart="@dimen/global_margin_full"
+        android:layout_marginEnd="@dimen/global_margin_full"
+        android:layout_marginTop="@dimen/global_margin_full" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pro_version_description"
+        style="@style/TextAppearance.Lens.Body2"
+        android:layout_marginStart="@dimen/global_margin_full"
+        android:layout_marginEnd="@dimen/global_margin_full"
         android:layout_marginTop="@dimen/global_margin_full" />
 
     <androidx.recyclerview.widget.RecyclerView
