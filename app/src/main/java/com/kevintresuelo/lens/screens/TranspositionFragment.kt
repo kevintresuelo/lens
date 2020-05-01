@@ -21,6 +21,8 @@ class TranspositionFragment : Fragment() {
     private lateinit var binding: FragmentTranspositionBinding
     private var selectedFormula: LensFormula? = null
 
+    private lateinit var billingViewModel: BillingViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,8 +46,7 @@ class TranspositionFragment : Fragment() {
         /**
          * Checks for new purchases of the user
          */
-        val billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
-        billingViewModel.queryPurchases()
+        billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
 
         MobileAds.initialize(requireContext()) {}
         billingViewModel.proVersionLiveData.observe(viewLifecycleOwner, Observer {
@@ -81,6 +82,11 @@ class TranspositionFragment : Fragment() {
         val adRequest = AdRequest.Builder().build()
         binding.ftAvBottomAds.visibility = View.VISIBLE
         binding.ftAvBottomAds.loadAd(adRequest)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        billingViewModel.queryPurchases()
     }
 
     /**
