@@ -22,9 +22,9 @@ package com.kevintresuelo.lens.utils
 
 class AppInfo{
     companion object {
-        const val APP_RELEASE_YEAR = 2017
-        const val APP_RELEASE_MONTH = 9
-        const val APP_RELEASE_DAY = 7
+        const val APP_RELEASE_YEAR = 2020
+        const val APP_RELEASE_MONTH = 5
+        const val APP_RELEASE_DAY = 1
 
         const val DEV_BIRTH_YEAR = 2000
         const val DEV_BIRTH_MONTH = 2
