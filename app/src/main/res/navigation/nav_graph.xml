@@ -13,9 +13,16 @@
         <action
             android:id="@+id/action_transpositionFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_transpositionFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.kevintresuelo.lens.screens.AboutFragment"
         android:label="@string/about_title" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kevintresuelo.lens.screens.SettingsFragment"
+        android:label="@string/settings_title" />
 </navigation>

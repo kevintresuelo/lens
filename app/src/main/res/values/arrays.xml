@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="prefs_general_theme_entries">
+        <item>@string/prefs_general_theme_option_default_title</item>
+        <item>@string/prefs_general_theme_option_light_title</item>
+        <item>@string/prefs_general_theme_option_dark_title</item>
+    </string-array>
+    <string-array name="prefs_general_theme_entry_values">
+        <item>@string/prefs_general_theme_option_default_value</item>
+        <item>@string/prefs_general_theme_option_light_value</item>
+        <item>@string/prefs_general_theme_option_dark_value</item>
+    </string-array>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/prefs_general_title">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/prefs_general_theme_entries"
+            android:entryValues="@array/prefs_general_theme_entry_values"
+            android:key="@string/prefs_general_theme_key"
+            android:title="@string/prefs_general_theme_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            android:key="@string/prefs_general_pro_version_key"
+            android:title="@string/prefs_general_pro_version_title"
+            android:summary="@string/prefs_general_pro_version_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>

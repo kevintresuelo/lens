@@ -57,7 +57,11 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
 }
 
 dependencies {
@@ -86,6 +90,8 @@ dependencies {
 
     implementation "com.android.billingclient:billing:$billing_version"
     implementation "com.android.billingclient:billing-ktx:$billing_version"
+
+    implementation "com.google.android.gms:play-services-ads:$ads_version"
 
     implementation "com.google.android.material:material:$material_version"
 

@@ -37,7 +37,7 @@ import com.kevintresuelo.lens.R
 import com.kevintresuelo.lens.billing.viewmodels.BillingViewModel
 import com.kevintresuelo.lens.databinding.DialogContributorsListBinding
 import com.kevintresuelo.lens.databinding.FragmentAboutBinding
-import com.kevintresuelo.lens.donate.DonateDialogFragment
+import com.kevintresuelo.lens.billing.payments.DonateDialogFragment
 import com.kevintresuelo.lens.utils.AppInfo
 import com.kevintresuelo.lens.utils.openUrl
 import com.kevintresuelo.lens.utils.toOrdinal

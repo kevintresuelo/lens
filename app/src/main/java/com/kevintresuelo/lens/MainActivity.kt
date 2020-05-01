@@ -1,18 +1,21 @@
 package com.kevintresuelo.lens
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.preference.PreferenceManager
 import com.kevintresuelo.lens.databinding.ActivityMainBinding
 import com.kevintresuelo.novus.UpdateChecker
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -37,6 +40,21 @@ class MainActivity : AppCompatActivity() {
 
         updateChecker = UpdateChecker(this, findViewById(android.R.id.content), false)
         updateChecker.checkForUpdates()
+
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        when (sharedPreferences.getString(getString(R.string.prefs_general_theme_key), getString(R.string.prefs_general_theme_default_value))) {
+            getString(R.string.prefs_general_theme_option_dark_value) -> {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+            }
+            getString(R.string.prefs_general_theme_option_light_value) -> {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+            }
+            else -> {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            }
+        }
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onResume() {
@@ -53,5 +71,11 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         UpdateChecker.assessActivityResult(requestCode, resultCode, findViewById(android.R.id.content))
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            getString(R.string.prefs_general_theme_key) -> recreate()
+        }
     }
 }

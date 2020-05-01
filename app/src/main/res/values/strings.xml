@@ -83,12 +83,37 @@
     <string name="updater_feedback_error">An error occurred while trying to update. Please try again.</string>
 
     <string name="donate_title">Donate</string>
-    <string name="donate_error_service_unavailable_message">A connection to the billing server could not be made to process the donation. Please check your internet connection or try again in a few minutes.</string>
-    <string name="donate_error_unknown_message">An unknown error has occurred with the donation.</string>
-    <string name="donate_pending_message">A purchase on your account is still pending. Please coordinate with your payment method provider to complete your purchase.</string>
     <string name="donate_received_message">Donation received! From the bottom of our hearts, we thank you for showing your support.</string>
+
+    <string name="pro_version_title">Get Pro version</string>
+    <string name="pro_version_description">Pro version removes ads and unlocks the theme selection.</string>
+
+    <string name="billing_error_service_unavailable_message">A connection to the billing server could not be made to process the purchase. Please check your internet connection or try again in a few minutes.</string>
+    <string name="billing_error_unknown_message">An unknown error has occurred with the purchase.</string>
+    <string name="billing_pending_message">A purchase on your account is still pending. Please coordinate with your payment method provider to complete your purchase.</string>
 
     <string name="contributors_title">Huge thanks to the contributors!</string>
     <string name="contributors_description_translation">%1$s translations</string>
     <string name="contributors_action" translatable="false">@android:string/ok</string>
+
+    <string name="settings_title">Settings</string>
+
+    <string name="prefs_general_title">General</string>
+    <string name="prefs_general_theme_title">Theme</string>
+    <string name="prefs_general_theme_key" translatable="false">theme</string>
+    <string name="prefs_general_theme_option_default_title">Use system default</string>
+    <string name="prefs_general_theme_option_default_value" translatable="false">default</string>
+    <string name="prefs_general_theme_option_light_title">Light theme</string>
+    <string name="prefs_general_theme_option_light_value" translatable="false">light</string>
+    <string name="prefs_general_theme_option_dark_title">Dark theme</string>
+    <string name="prefs_general_theme_option_dark_value" translatable="false">dark</string>
+    <string name="prefs_general_theme_default_value" translatable="false">@string/prefs_general_theme_option_default_value</string>
+    <string name="prefs_general_pro_version_title" translatable="false">Pro version</string>
+    <string name="prefs_general_pro_version_summary" translatable="false">Remove ads and unlock theme chooser</string>
+    <string name="prefs_general_pro_version_key" translatable="false">pro_version</string>
+
+    <string name="prefs_error_no_pro_version_title">Pro version exclusive</string>
+    <string name="prefs_error_no_pro_version_message">You have discovered a Pro version exclusive feature! In order to proceed, you need to purchase the Pro version of the app. This will also get rid of the ads.</string>
+    <string name="prefs_error_no_pro_version_positive_action">Get Pro</string>
+    <string name="prefs_error_no_pro_version_negative_action">Dismiss</string>
 </resources>

@@ -10,6 +10,7 @@ buildscript {
     ext.room_version = "2.2.5"
     ext.recycler_view_version = "1.2.0-alpha02"
     ext.lifecycle_extensions_version = "2.2.0"
+    ext.ads_version = "19.1.0"
     repositories {
         google()
         jcenter()

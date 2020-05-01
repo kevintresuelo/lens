@@ -1,14 +1,17 @@
 package com.kevintresuelo.lens.screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kevintresuelo.adnoto.RatePrompter
-
 import com.kevintresuelo.lens.R
 import com.kevintresuelo.lens.billing.viewmodels.BillingViewModel
 import com.kevintresuelo.lens.databinding.FragmentTranspositionBinding
@@ -44,6 +47,13 @@ class TranspositionFragment : Fragment() {
         val billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
         billingViewModel.queryPurchases()
 
+        MobileAds.initialize(requireContext()) {}
+        billingViewModel.proVersionLiveData.observe(viewLifecycleOwner, Observer {
+            if (it == null || !it.entitled) {
+                showAds()
+            }
+        })
+
         binding.ftCbMinusCylinderEnabled.setOnCheckedChangeListener { buttonView, isChecked ->
             processMinusCylinderCheckedChange(isChecked)
         }
@@ -67,6 +77,12 @@ class TranspositionFragment : Fragment() {
         return binding.root
     }
 
+    private fun showAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.ftAvBottomAds.visibility = View.VISIBLE
+        binding.ftAvBottomAds.loadAd(adRequest)
+    }
+
     /**
      * Inflates the menu from R.menu.menu_checker resource
      */
@@ -81,6 +97,7 @@ class TranspositionFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mt_i_about -> this.findNavController().navigate(R.id.action_transpositionFragment_to_aboutFragment)
+            R.id.mt_i_settings -> this.findNavController().navigate(R.id.action_transpositionFragment_to_settingsFragment)
         }
         return super.onOptionsItemSelected(item)
     }
