@@ -118,6 +118,18 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <TextView
+                            android:id="@+id/ft_tv_minus_cylinder_summary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/ft_til_minus_cylinder_cylinder_axis"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textAlignment="center"
+                            android:text="@string/transposition_minus_cylinder_summary"
+                            style="@style/TextAppearance.Lens.Caption"
+                            android:padding="@dimen/global_margin_full"/>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -216,6 +228,18 @@
                                 android:inputType="number" />
 
                         </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/ft_tv_plus_cylinder_summary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/ft_til_plus_cylinder_cylinder_axis"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textAlignment="center"
+                            android:text="@string/transposition_plus_cylinder_summary"
+                            style="@style/TextAppearance.Lens.Caption"
+                            android:padding="@dimen/global_margin_full"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -335,6 +359,18 @@
                                 android:inputType="number" />
 
                         </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/ft_tv_cross_cylinder_summary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/ft_til_cross_cylinder_cylinder_axis_2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textAlignment="center"
+                            android:text="@string/transposition_cross_cylinder_summary"
+                            style="@style/TextAppearance.Lens.Caption"
+                            android:padding="@dimen/global_margin_full"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

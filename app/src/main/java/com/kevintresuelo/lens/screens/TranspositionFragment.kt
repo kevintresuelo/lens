@@ -169,17 +169,20 @@ class TranspositionFragment : Fragment() {
             binding.ftTietMinusCylinderSpherePower.setText("")
             binding.ftTietMinusCylinderCylinderPower.setText("")
             binding.ftTietMinusCylinderCylinderAxis.setText("")
+            binding.ftTvMinusCylinderSummary.setText(R.string.transposition_minus_cylinder_summary)
         }
         if (lensFormula != LensFormula.PLUS_CYLINDER) {
             binding.ftTietPlusCylinderSpherePower.setText("")
             binding.ftTietPlusCylinderCylinderPower.setText("")
             binding.ftTietPlusCylinderCylinderAxis.setText("")
+            binding.ftTvPlusCylinderSummary.setText(R.string.transposition_plus_cylinder_summary)
         }
         if (lensFormula != LensFormula.CROSS_CYLINDER) {
             binding.ftTietCrossCylinderCylinderPower1.setText("")
             binding.ftTietCrossCylinderCylinderAxis1.setText("")
             binding.ftTietCrossCylinderCylinderPower2.setText("")
             binding.ftTietCrossCylinderCylinderAxis2.setText("")
+            binding.ftTvCrossCylinderSummary.setText(R.string.transposition_cross_cylinder_summary)
         }
     }
 
@@ -377,22 +380,41 @@ class TranspositionFragment : Fragment() {
     }
 
     private fun showMinusCylinderResult(minusCylinder: LensPrescription) {
-        binding.ftTietMinusCylinderSpherePower.setText(String.format("%.2f",minusCylinder.firstPower))
-        binding.ftTietMinusCylinderCylinderPower.setText(String.format("%.2f",minusCylinder.secondPower))
-        binding.ftTietMinusCylinderCylinderAxis.setText(minusCylinder.secondAxis.toString())
+        val firstPower = String.format("%.2f",minusCylinder.firstPower)
+        val secondPower = String.format("%.2f", minusCylinder.secondPower)
+        val secondAxis = minusCylinder.secondAxis.toString()
+        val parsedResult = "$firstPower ${getString(R.string.transposition_unit_sphere_power)} $secondPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $secondAxis"
+
+        binding.ftTietMinusCylinderSpherePower.setText(firstPower)
+        binding.ftTietMinusCylinderCylinderPower.setText(secondPower)
+        binding.ftTietMinusCylinderCylinderAxis.setText(secondAxis)
+        binding.ftTvMinusCylinderSummary.text = parsedResult
     }
 
     private fun showPlusCylinderResult(plusCylinder: LensPrescription) {
-        binding.ftTietPlusCylinderSpherePower.setText(String.format("%.2f",plusCylinder.firstPower))
-        binding.ftTietPlusCylinderCylinderPower.setText(String.format("%.2f",plusCylinder.secondPower))
-        binding.ftTietPlusCylinderCylinderAxis.setText(plusCylinder.secondAxis.toString())
+        val firstPower = String.format("%.2f", plusCylinder.firstPower)
+        val secondPower = String.format("%.2f", plusCylinder.secondPower)
+        val secondAxis = plusCylinder.secondAxis.toString()
+        val parsedResult = "$firstPower ${getString(R.string.transposition_unit_sphere_power)} $secondPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $secondAxis"
+
+        binding.ftTietPlusCylinderSpherePower.setText(firstPower)
+        binding.ftTietPlusCylinderCylinderPower.setText(secondPower)
+        binding.ftTietPlusCylinderCylinderAxis.setText(secondAxis)
+        binding.ftTvPlusCylinderSummary.text = parsedResult
     }
 
     private fun showCrossCylinderResult(crossCylinder: LensPrescription) {
-        binding.ftTietCrossCylinderCylinderPower1.setText(String.format("%.2f",crossCylinder.firstPower))
-        binding.ftTietCrossCylinderCylinderAxis1.setText(crossCylinder.firstAxis.toString())
-        binding.ftTietCrossCylinderCylinderPower2.setText(String.format("%.2f",crossCylinder.secondPower))
-        binding.ftTietCrossCylinderCylinderAxis2.setText(crossCylinder.secondAxis.toString())
+        val firstPower = String.format("%.2f", crossCylinder.firstPower)
+        val firstAxis = crossCylinder.firstAxis.toString()
+        val secondPower = String.format("%.2f", crossCylinder.secondPower)
+        val secondAxis = crossCylinder.secondAxis.toString()
+        val parsedResult = "$firstPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $firstAxis   $secondPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $secondAxis\n\n$secondPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $secondAxis   $firstPower ${getString(R.string.transposition_unit_cylinder_power)} ${getString(R.string.transposition_unit_axis)} $firstAxis"
+
+        binding.ftTietCrossCylinderCylinderPower1.setText(firstPower)
+        binding.ftTietCrossCylinderCylinderAxis1.setText(firstAxis)
+        binding.ftTietCrossCylinderCylinderPower2.setText(secondPower)
+        binding.ftTietCrossCylinderCylinderAxis2.setText(secondAxis)
+        binding.ftTvCrossCylinderSummary.text = parsedResult
     }
 
     private enum class LensFormula {

@@ -19,8 +19,11 @@
     <string name="app_name_pro">Lens Transposition Pro</string>
 
     <string name="transposition_minus_cylinder_title">(-) Cylinder</string>
+    <string name="transposition_minus_cylinder_summary">Minus cylinder form</string>
     <string name="transposition_plus_cylinder_title">(+) Cylinder</string>
+    <string name="transposition_plus_cylinder_summary">Plus cylinder form</string>
     <string name="transposition_cross_cylinder_title">Cross Cylinder</string>
+    <string name="transposition_cross_cylinder_summary">\nCross cylinder form\n</string>
     <string name="transposition_label_sphere_power">Sphere power</string>
     <string name="transposition_label_cylinder_power">Cylinder power</string>
     <string name="transposition_label_axis">Axis</string>
