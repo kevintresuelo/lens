@@ -29,6 +29,7 @@
     <dimen name="const8_0x">32dp</dimen>
     <dimen name="const12_0x">48dp</dimen>
     <dimen name="const16_0x">64dp</dimen>
+    <dimen name="const24_0x">96dp</dimen>
 
     <!--Emphasis modifiers for "on" colors-->
     <dimen name="alpha_emphasis_high">@dimen/material_emphasis_high_type</dimen>
@@ -42,6 +43,8 @@
     <dimen name="global_spacing_half">@dimen/const2_0x</dimen>
 
     <dimen name="about_icon_size">@dimen/const6_0x</dimen>
+
+    <dimen name="optical_cross_size">@dimen/const24_0x</dimen>
 
     <dimen name="donate_list_item_height">@dimen/const16_0x</dimen>
     <dimen name="donate_list_item_icon_size">@dimen/const6_0x</dimen>

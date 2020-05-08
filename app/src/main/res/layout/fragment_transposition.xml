@@ -376,6 +376,71 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ft_mcv_optical_cross"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/global_margin_full"
+                    android:layout_marginTop="@dimen/global_margin_full"
+                    android:layout_marginEnd="@dimen/global_margin_full"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ft_cl_optical_cross"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/global_margin_full">
+
+                        <TextView
+                            android:id="@+id/ft_tv_optical_cross_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/global_margin_full"
+                            android:text="@string/transposition_optical_cross_title"
+                            android:textAppearance="@style/TextAppearance.Lens.Overline"
+                            android:textColor="@color/color_on_surface_low"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ft_iv_optical_cross_reference"
+                            android:layout_width="@dimen/optical_cross_size"
+                            android:layout_height="@dimen/optical_cross_size"
+                            android:src="@drawable/optical_cross_reference"
+                            app:layout_constraintTop_toBottomOf="@id/ft_tv_optical_cross_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ft_iv_optical_cross_axis"
+                            android:layout_width="@dimen/optical_cross_size"
+                            android:layout_height="@dimen/optical_cross_size"
+                            android:src="@drawable/optical_cross_axis"
+                            app:layout_constraintTop_toTopOf="@id/ft_iv_optical_cross_reference"
+                            app:layout_constraintStart_toStartOf="@id/ft_iv_optical_cross_reference"
+                            app:layout_constraintEnd_toEndOf="@id/ft_iv_optical_cross_reference"
+                            app:layout_constraintBottom_toBottomOf="@id/ft_iv_optical_cross_reference"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/ft_tv_optical_cross_summary"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/ft_iv_optical_cross_reference"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textAlignment="center"
+                            android:text="@string/transposition_optical_cross_summary"
+                            style="@style/TextAppearance.Lens.Caption"
+                            android:padding="@dimen/global_margin_full"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
                 <Button
                     android:id="@+id/ft_btn_submit"
                     android:layout_width="wrap_content"

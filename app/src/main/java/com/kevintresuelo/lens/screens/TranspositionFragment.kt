@@ -1,6 +1,13 @@
 package com.kevintresuelo.lens.screens
 
+import android.graphics.Color
+import android.opengl.Matrix
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -184,6 +191,8 @@ class TranspositionFragment : Fragment() {
             binding.ftTietCrossCylinderCylinderAxis2.setText("")
             binding.ftTvCrossCylinderSummary.setText(R.string.transposition_cross_cylinder_summary)
         }
+        binding.ftIvOpticalCrossAxis.visibility = View.GONE
+        binding.ftTvOpticalCrossSummary.setText(R.string.transposition_optical_cross_summary)
     }
 
     private fun transpose() {
@@ -377,6 +386,7 @@ class TranspositionFragment : Fragment() {
         val crossCylinder = LensPrescription(crossCylinderCylinderPower1, crossCylinderCylinderAxis1, crossCylinderCylinderPower2, crossCylinderCylinderAxis2)
         showCrossCylinderResult(crossCylinder)
 
+        showOpticalCross(rawData)
     }
 
     private fun showMinusCylinderResult(minusCylinder: LensPrescription) {
@@ -415,6 +425,19 @@ class TranspositionFragment : Fragment() {
         binding.ftTietCrossCylinderCylinderPower2.setText(secondPower)
         binding.ftTietCrossCylinderCylinderAxis2.setText(secondAxis)
         binding.ftTvCrossCylinderSummary.text = parsedResult
+    }
+
+    private fun showOpticalCross(rawData: LensPrescription) {
+        val firstMeridian = "M${rawData.firstAxis}: ${String.format("%.2f", rawData.firstPower)} D"
+        val secondMeridian = "M${rawData.secondAxis}: ${String.format("%.2f", rawData.secondPower)} D"
+
+        binding.ftIvOpticalCrossAxis.visibility = View.VISIBLE
+        binding.ftIvOpticalCrossAxis.rotation = -rawData.firstAxis.toFloat()
+        binding.ftTvOpticalCrossSummary.text = if (Build.VERSION.SDK_INT >= 24) {
+            Html.fromHtml("<font color='#3dc17a'>$firstMeridian</font><br /> <br /><font color='#c13d83'>$secondMeridian</font>", Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            Html.fromHtml("<font color='#3dc17a'>$firstMeridian</font><br /> <br /><font color='#c13d83'>$secondMeridian</font>")
+        }
     }
 
     private enum class LensFormula {
