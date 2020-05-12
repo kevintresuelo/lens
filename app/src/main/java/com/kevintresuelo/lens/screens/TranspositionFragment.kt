@@ -23,6 +23,7 @@ import com.kevintresuelo.adnoto.RatePrompter
 import com.kevintresuelo.lens.R
 import com.kevintresuelo.lens.billing.viewmodels.BillingViewModel
 import com.kevintresuelo.lens.databinding.FragmentTranspositionBinding
+import java.lang.NumberFormatException
 
 class TranspositionFragment : Fragment() {
 
@@ -214,7 +215,7 @@ class TranspositionFragment : Fragment() {
             return
         }
 
-        val inputData = getInputData()
+        val inputData = getInputData() ?: return
 
         if (!areInputsValid(inputData)) {
             return
@@ -251,28 +252,37 @@ class TranspositionFragment : Fragment() {
         }
     }
 
-    private fun getInputData(): LensPrescription {
-        val firstPower = when (selectedFormula!!) {
-            LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderSpherePower.text
-            LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderSpherePower.text
-            LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderPower1.text
-        }.toString().toDouble()
-        val firstAxis = when (selectedFormula!!) {
-            LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderAxis1.text
-            else -> "0"
-        }.toString().toInt()
-        val secondPower = when (selectedFormula!!) {
-            LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderCylinderPower.text
-            LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderCylinderPower.text
-            LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderPower2.text
-        }.toString().toDouble()
-        val secondAxis = when (selectedFormula!!) {
-            LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderCylinderAxis.text
-            LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderCylinderAxis.text
-            LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderAxis2.text
-        }.toString().toInt()
+    private fun getInputData(): LensPrescription? {
+        try {
+            val firstPower = when (selectedFormula!!) {
+                LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderSpherePower.text
+                LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderSpherePower.text
+                LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderPower1.text
+            }.toString().toDouble()
+            val firstAxis = when (selectedFormula!!) {
+                LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderAxis1.text
+                else -> "0"
+            }.toString().toInt()
+            val secondPower = when (selectedFormula!!) {
+                LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderCylinderPower.text
+                LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderCylinderPower.text
+                LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderPower2.text
+            }.toString().toDouble()
+            val secondAxis = when (selectedFormula!!) {
+                LensFormula.MINUS_CYLINDER -> binding.ftTietMinusCylinderCylinderAxis.text
+                LensFormula.PLUS_CYLINDER -> binding.ftTietPlusCylinderCylinderAxis.text
+                LensFormula.CROSS_CYLINDER -> binding.ftTietCrossCylinderCylinderAxis2.text
+            }.toString().toInt()
 
-        return LensPrescription(firstPower, firstAxis, secondPower, secondAxis)
+            return LensPrescription(firstPower, firstAxis, secondPower, secondAxis)
+        } catch (e: NumberFormatException) {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.transposition_error_unparsable_title)
+                .setMessage(R.string.transposition_error_unparsable_message)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
+            return null
+        }
     }
 
     private fun getRawData(inputData: LensPrescription): LensPrescription {

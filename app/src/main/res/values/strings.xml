@@ -38,6 +38,8 @@
     <string name="transposition_error_unchecked_message">Please select the type of lens formula before proceeding.</string>
     <string name="transposition_error_incomplete_title">Incomplete data</string>
     <string name="transposition_error_incomplete_message">Please fill in all the required fields to continue with the transposition.</string>
+    <string name="transposition_error_unparsable_title">Invalid number</string>
+    <string name="transposition_error_unparsable_message">The data you entered cannot be interpreted as numbers. Please try again.</string>
     <string name="transposition_error_minus_cylinder_plus_power_title">(-) Cylinder lens formula cannot have (+) Cylinder power</string>
     <string name="transposition_error_minus_cylinder_plus_power_message">You have entered a (+) Cylinder power in the (-) Cylinder lens formula. If you wish to proceed with these values, please enter them in the (+) Cylinder lens formula instead.</string>
     <string name="transposition_error_plus_cylinder_minus_power_title">(+) Cylinder lens formula cannot have (-) Cylinder power</string>
