@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        applyTheme()
+
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
@@ -41,10 +44,13 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
         updateChecker = UpdateChecker(this, findViewById(android.R.id.content), false)
         updateChecker.checkForUpdates()
+    }
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-
-        when (sharedPreferences.getString(getString(R.string.prefs_general_theme_key), getString(R.string.prefs_general_theme_default_value))) {
+    private fun applyTheme() {
+        when (sharedPreferences.getString(
+            getString(R.string.prefs_general_theme_key),
+            getString(R.string.prefs_general_theme_default_value)
+        )) {
             getString(R.string.prefs_general_theme_option_dark_value) -> {
                 delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
             }
@@ -81,7 +87,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
-            getString(R.string.prefs_general_theme_key) -> recreate()
+            getString(R.string.prefs_general_theme_key) -> applyTheme()
         }
     }
 }

@@ -459,8 +459,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-7668017069284131/3745606766"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
             android:visibility="gone" />
+        <!-- Test ad unit id: ca-app-pub-3940256099942544/6300978111 -->
+        <!-- Production ad unit id: ca-app-pub-7668017069284131/3745606766 -->
 
     </LinearLayout>
 
