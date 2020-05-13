@@ -1,6 +1,5 @@
 package com.kevintresuelo.lens.screens
 
-import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -52,7 +51,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
          */
         val themePreference: ListPreference? = findPreference(getString(R.string.prefs_general_theme_key))
         themePreference?.setOnPreferenceChangeListener { preference, newValue ->
-            if (hasProVersion) {
+            if (!hasProVersion) {
                 when (newValue) {
                     getString(R.string.prefs_general_theme_option_light_value), getString(R.string.prefs_general_theme_option_dark_value) -> {
                         MaterialAlertDialogBuilder(requireContext())
