@@ -1,7 +1,7 @@
 /**
  *
- *  Treble Check - Treble Compatibility Checking App
- *  Copyright (C) 2017-2020  KevinT.
+ *  Lens Transposition - Flat Transposition Calculator
+ *  Copyright (C) 2020  KevinT.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,10 +34,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.kevintresuelo.lens.BuildConfig
 import com.kevintresuelo.lens.R
+import com.kevintresuelo.lens.billing.payments.DonateDialogFragment
 import com.kevintresuelo.lens.billing.viewmodels.BillingViewModel
 import com.kevintresuelo.lens.databinding.DialogContributorsListBinding
 import com.kevintresuelo.lens.databinding.FragmentAboutBinding
-import com.kevintresuelo.lens.billing.payments.DonateDialogFragment
 import com.kevintresuelo.lens.utils.AppInfo
 import com.kevintresuelo.lens.utils.openUrl
 import com.kevintresuelo.lens.utils.toOrdinal

@@ -1,7 +1,7 @@
 /**
  *
- *  Treble Check - Treble Compatibility Checking App
- *  Copyright (C) 2017-2020  KevinT.
+ *  Lens Transposition - Flat Transposition Calculator
+ *  Copyright (C) 2020  KevinT.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
