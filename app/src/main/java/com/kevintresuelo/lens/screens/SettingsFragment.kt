@@ -22,10 +22,21 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var proVersionPreference: Preference? = null
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+
+        /**
+         * Retrieves and displays set of preferences from xml resource.
+         */
         setPreferencesFromResource(R.xml.settings, rootKey)
 
+        /**
+         * Retrieves the default SharedPreferences based on the context provided.
+         */
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
+        /**
+         * Checks whether the user has Pro version and applies the appropriate
+         * action.
+         */
         val billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
         billingViewModel.proVersionLiveData.observe(this, Observer {
             it?.apply {
@@ -34,6 +45,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         })
 
+        /**
+         * Prevents the user from selecting themes other than the default theme
+         * if the user isn't entitled to the Pro version, otherwise allow changes
+         * to be saved.
+         */
         val themePreference: ListPreference? = findPreference(getString(R.string.prefs_general_theme_key))
         themePreference?.setOnPreferenceChangeListener { preference, newValue ->
             if (hasProVersion) {
@@ -56,6 +72,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
         }
 
+        /**
+         * Displays the state of the Pro version.
+         */
         proVersionPreference = findPreference(getString(R.string.prefs_general_pro_version_key))
         proVersionPreference?.setOnPreferenceClickListener {
             if (hasProVersion) {
@@ -69,14 +88,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
             true
         }
-
-        val prefsFileKey = "pro_version"
-        val hasPurchasedKey = "has_purchased"
-
-        val sharedProVersionPreferences = context?.getSharedPreferences(prefsFileKey, Context.MODE_PRIVATE)
-        val hasPurchased = sharedProVersionPreferences?.getBoolean(hasPurchasedKey, false) ?: false
     }
 
+    /**
+     * Changes the state of Pro version if the user is entitled to it.
+     */
     private fun enableProVersionPreference(state: Boolean) {
         if (!state) {
             proVersionPreference?.summary = getString(R.string.prefs_general_pro_version_entitled_summary)

@@ -48,15 +48,18 @@ class TranspositionFragment : Fragment() {
         setHasOptionsMenu(true)
 
         /**
-         * Asks the user to rate the app on Google Play
+         * Asks the user to rate the app on Google Play.
          */
         RatePrompter(context)
 
         /**
-         * Checks for new purchases of the user
+         * Checks for new purchases of the user.
          */
         billingViewModel = ViewModelProvider(this).get(BillingViewModel::class.java)
 
+        /**
+         * Loads ads if the user isn't entitled to Pro version.
+         */
         MobileAds.initialize(requireContext()) {}
         billingViewModel.proVersionLiveData.observe(viewLifecycleOwner, Observer {
             if (it == null || !it.entitled) {
@@ -66,18 +69,30 @@ class TranspositionFragment : Fragment() {
             }
         })
 
+        /**
+         * Alters the UI based on whether the minus cylinder form is checked.
+         */
         binding.ftCbMinusCylinderEnabled.setOnCheckedChangeListener { buttonView, isChecked ->
             processMinusCylinderCheckedChange(isChecked)
         }
 
+        /**
+         * Alters the UI based on whether the plus cylinder form is checked.
+         */
         binding.ftCbPlusCylinderEnabled.setOnCheckedChangeListener { buttonView, isChecked ->
             processPlusCylinderCheckedChange(isChecked)
         }
 
+        /**
+         * Alters the UI based on whether the cross cylinder form is checked.
+         */
         binding.ftCbCrossCylinderEnabled.setOnCheckedChangeListener { buttonView, isChecked ->
             processCrossCylinderCheckedChange(isChecked)
         }
 
+        /**
+         * Starts the transposition process.
+         */
         binding.ftBtnSubmit.setOnClickListener {
             transpose()
         }
@@ -89,6 +104,9 @@ class TranspositionFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Shows ads by loading the ad request to the AdView.
+     */
     private fun showAds() {
         Log.d("TAG","showAds")
         val adRequest = AdRequest.Builder().build()
@@ -102,7 +120,7 @@ class TranspositionFragment : Fragment() {
     }
 
     /**
-     * Inflates the menu from R.menu.menu_checker resource
+     * Inflates the menu from R.menu.menu_checker resource.
      */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_transposition, menu)
@@ -110,7 +128,7 @@ class TranspositionFragment : Fragment() {
     }
 
     /**
-     * Navigates to specific fragments depending on the menu clicked
+     * Navigates to specific fragments depending on the menu clicked.
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -120,6 +138,9 @@ class TranspositionFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Updates the UI based on whether the minus cylinder form is checked.
+     */
     private fun processMinusCylinderCheckedChange(isChecked: Boolean) {
 
         if (isChecked) {
@@ -133,6 +154,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTietMinusCylinderCylinderAxis.isEnabled = isChecked
     }
 
+    /**
+     * Updates the UI based on whether the plus cylinder form is checked.
+     */
     private fun processPlusCylinderCheckedChange(isChecked: Boolean) {
 
         if (isChecked) {
@@ -146,6 +170,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTietPlusCylinderCylinderAxis.isEnabled = isChecked
     }
 
+    /**
+     * Updates the UI based on whether the cross cylinder form is checked.
+     */
     private fun processCrossCylinderCheckedChange(isChecked: Boolean) {
 
         if (isChecked) {
@@ -160,6 +187,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTietCrossCylinderCylinderAxis2.isEnabled = isChecked
     }
 
+    /**
+     * Unchecks other lens forms except for the one provided.
+     */
     private fun uncheckOthersExcept(lensFormula: LensFormula?) {
         if (lensFormula != LensFormula.MINUS_CYLINDER) {
             binding.ftCbMinusCylinderEnabled.isChecked = false
@@ -172,6 +202,9 @@ class TranspositionFragment : Fragment() {
         }
     }
 
+    /**
+     * Clears other lens forms except for the one provided.
+     */
     private fun clearOthersExcept(lensFormula: LensFormula?) {
         if (lensFormula != LensFormula.MINUS_CYLINDER) {
             binding.ftTietMinusCylinderSpherePower.setText("")
@@ -196,6 +229,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTvOpticalCrossSummary.setText(R.string.transposition_optical_cross_summary)
     }
 
+    /**
+     * Transposes the given data to other lens forms.
+     */
     private fun transpose() {
         if (!hasSelectedLensFormula()) {
             MaterialAlertDialogBuilder(requireContext())
@@ -226,6 +262,9 @@ class TranspositionFragment : Fragment() {
         processResults(rawData)
     }
 
+    /**
+     * Checks whether at least one lens formula is selected.
+     */
     private fun hasSelectedLensFormula(): Boolean {
         return (binding.ftCbMinusCylinderEnabled.isChecked ||
                 binding.ftCbPlusCylinderEnabled.isChecked ||
@@ -233,6 +272,9 @@ class TranspositionFragment : Fragment() {
                 selectedFormula != null
     }
 
+    /**
+     * Checks all input data for completeness.
+     */
     private fun areInputsComplete(): Boolean {
         return when {
             selectedFormula == LensFormula.MINUS_CYLINDER &&
@@ -252,6 +294,9 @@ class TranspositionFragment : Fragment() {
         }
     }
 
+    /**
+     * Parses the input data into a Lens Prescription type.
+     */
     private fun getInputData(): LensPrescription? {
         try {
             val firstPower = when (selectedFormula!!) {
@@ -285,6 +330,9 @@ class TranspositionFragment : Fragment() {
         }
     }
 
+    /**
+     * Returns the raw data as seen on an optical cross.
+     */
     private fun getRawData(inputData: LensPrescription): LensPrescription {
         val firstMeridian = when (selectedFormula!!) {
             LensFormula.MINUS_CYLINDER -> inputData.secondAxis
@@ -310,6 +358,9 @@ class TranspositionFragment : Fragment() {
         return LensPrescription(firstMeridianPower, firstMeridian, secondMeridianPower, secondMeridian)
     }
 
+    /**
+     * Checks all input data for validity.
+     */
     private fun areInputsValid(inputData: LensPrescription): Boolean {
         if (selectedFormula == LensFormula.MINUS_CYLINDER && inputData.secondPower > 0) {
             MaterialAlertDialogBuilder(requireContext())
@@ -336,6 +387,9 @@ class TranspositionFragment : Fragment() {
         return checkIfValidAxes(inputData)
     }
 
+    /**
+     * Checks the given axes if they are indeed 90 degrees apart.
+     */
     private fun checkIfValidAxes(inputData: LensPrescription): Boolean {
         return if (inputData.firstAxis in 0..180 && inputData.secondAxis in 0..180) {
             true
@@ -349,6 +403,9 @@ class TranspositionFragment : Fragment() {
         }
     }
 
+    /**
+     * Returns the opposite axis of the given angle.
+     */
     private fun getOppositeAxis(axis: Int): Int {
         return if (axis > 90) {
             axis - 90
@@ -357,6 +414,10 @@ class TranspositionFragment : Fragment() {
         }
     }
 
+    /**
+     * Parses the result into the different lens forms and passes it onto the
+     * appropriate UI handler.
+     */
     private fun processResults(rawData: LensPrescription) {
         val rawDataHigherPower: Double
         val rawDataLowerPower: Double
@@ -399,6 +460,9 @@ class TranspositionFragment : Fragment() {
         showOpticalCross(rawData)
     }
 
+    /**
+     * Updates the UI to reflect the minus cylinder form result.
+     */
     private fun showMinusCylinderResult(minusCylinder: LensPrescription) {
         val firstPower = String.format("%.2f",minusCylinder.firstPower)
         val secondPower = String.format("%.2f", minusCylinder.secondPower)
@@ -410,6 +474,10 @@ class TranspositionFragment : Fragment() {
         binding.ftTietMinusCylinderCylinderAxis.setText(secondAxis)
         binding.ftTvMinusCylinderSummary.text = parsedResult
     }
+
+    /**
+     * Updates the UI to reflect the plus cylinder form result.
+     */
 
     private fun showPlusCylinderResult(plusCylinder: LensPrescription) {
         val firstPower = String.format("%.2f", plusCylinder.firstPower)
@@ -423,6 +491,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTvPlusCylinderSummary.text = parsedResult
     }
 
+    /**
+     * Updates the UI to reflect the cross cylinder form result.
+     */
     private fun showCrossCylinderResult(crossCylinder: LensPrescription) {
         val firstPower = String.format("%.2f", crossCylinder.firstPower)
         val firstAxis = crossCylinder.firstAxis.toString()
@@ -437,6 +508,9 @@ class TranspositionFragment : Fragment() {
         binding.ftTvCrossCylinderSummary.text = parsedResult
     }
 
+    /**
+     * Updates the UI to reflect the optical cross result.
+     */
     private fun showOpticalCross(rawData: LensPrescription) {
         val firstMeridian = "M${rawData.firstAxis}: ${String.format("%.2f", rawData.firstPower)} D"
         val secondMeridian = "M${rawData.secondAxis}: ${String.format("%.2f", rawData.secondPower)} D"
